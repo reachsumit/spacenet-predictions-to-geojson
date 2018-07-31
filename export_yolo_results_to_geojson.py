@@ -6,9 +6,8 @@ from shapely import geometry
 MIN_CONF = 50
 adjust_x = 10
 adjust_y = 0
-TIF_PATH = "/media/sumit/DATA/uChicago/Capstone/dataset/SpaceNet_Buildings_Dataset_v2/"\
-            "AOI_2_Vegas_Test_public/RGB-PanSharpen/"
-CITY = "paris"
+TIF_PATH = "/media/sumit/DATA/uChicago/Capstone/dataset/SpaceNet_Buildings_Dataset_v2/AOI_5_Khartoum_Test_public/RGB-PanSharpen/"
+CITY = "khartoum"
 
 print("minimum confidence threshold: {}%".format(MIN_CONF))
 
@@ -61,7 +60,7 @@ for i in range(0,int(len(buildings)/1000)):
                                               "features":buildings[i*1000:(i+1)*1000-1]}
     filename = "buildings"+str((i+1)*1000-1)+'.geojson'
     print(i*1000, (i+1)*1000-1, filename)
-    with open(CITY+"_test"+filename, 'w') as outfile:
+    with open(CITY+"_test/"+filename, 'w') as outfile:
         json.dump(my_geo, outfile)
         
 my_geo = {'type':'FeatureCollection', "crs": { "type": "name", \
@@ -69,5 +68,5 @@ my_geo = {'type':'FeatureCollection', "crs": { "type": "name", \
                                               "features":buildings[i*1000:]}
 filename = "buildings"+str(len(buildings)-1)+'.geojson'
 print((i+1)*1000, len(buildings)-1, filename)
-with open(CITY+"_test"+filename, 'w') as outfile:
+with open(CITY+"_test/"+filename, 'w') as outfile:
     json.dump(my_geo, outfile)
